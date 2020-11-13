@@ -1,0 +1,11 @@
+<!-- Keep the Value-->
+<mat-card>
+    <mat-form-field>
+        <textarea matInput rows="6" [(ngModel)]="enteredValue"></textarea>
+    </mat-form-field>
+    <!-- Call the method and refresh the value -->
+    <button
+        mat-raised-button
+        color="accent"
+        (click)="onAddPost()">Save Post</button>
+</mat-card>
