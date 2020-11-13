@@ -1,5 +1,8 @@
 // Import Library
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { PostsService } from '../posts.service';
 
 // Config the Component
 @Component({
@@ -10,13 +13,14 @@ import { Component } from '@angular/core';
 
 // Create and Export Class
 export class PostCreateComponent {
-    
-    // Declare variables
-    enteredValue = '';
-    newPost = 'NO CONTENT';
+
+    constructor(public postsService: PostsService) { }
 
     // Declare Methods
-    onAddPost() {
-        this.newPost = this.enteredValue;
+    onAddPost(form: NgForm) {
+        if (form.invalid) {
+            return;
+        }
+        this.postsService.addPost(form.value.title, form.value.content);
     }
 }
